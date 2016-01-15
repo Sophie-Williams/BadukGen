@@ -21,9 +21,15 @@
     <ClCompile Include="boolMatrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="bot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="boolMatrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

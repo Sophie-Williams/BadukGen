@@ -3,7 +3,7 @@
 #include <windows.h>
 #include <cstdlib>
 #include "boolMatrix.h"
-using namespace std;
+#include "bot.h"
 
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 COORD CursorPosition;
@@ -20,6 +20,8 @@ int yComponent(int y, const int yBound);
 
 void updatePositionAlert(int x, int y, const int yBound);
 void updateCoordinateAlert(int x, int y);
+
+bool stoneIsDead(int x, int y, BoolMatrix baduk);
 
 int main()
 {
@@ -68,7 +70,7 @@ int main()
         if (GetAsyncKeyState(VK_RETURN)) //user hits enter
         {
             baduk.set(countX - 2, countY - 2, true);
-            cout << "*";
+            std::cout << "*";
         }
         if (GetAsyncKeyState(VK_ESCAPE)) //exits the program
         {
@@ -80,7 +82,7 @@ int main()
 
 void printGrid(BoolMatrix& baduk)
 {
-    cout << baduk.toString();
+    std::cout << baduk.toString();
 }
 
 void goToCoord(int x, int y)
@@ -95,7 +97,7 @@ void moveDown(int x, int& y, BoolMatrix baduk)
     cursorHandle(x, y, baduk);
     y++;
     goToCoord(x, y);
-    cout << "0";
+    std::cout << "0";
 }
 
 void moveUp(int x, int& y, BoolMatrix baduk)
@@ -103,7 +105,7 @@ void moveUp(int x, int& y, BoolMatrix baduk)
     cursorHandle(x, y, baduk);
     y--;
     goToCoord(x, y);
-    cout << "0";
+    std::cout << "0";
 }
 
 void moveLeft(int& x, int y, BoolMatrix baduk)
@@ -111,7 +113,7 @@ void moveLeft(int& x, int y, BoolMatrix baduk)
     cursorHandle(x, y, baduk);
     x--;
     goToCoord(x, y);
-    cout << "0";
+    std::cout << "0";
     goToCoord(9, 1);
 }
 
@@ -120,16 +122,16 @@ void moveRight(int& x, int y, BoolMatrix baduk)
     cursorHandle(x, y, baduk);
     x++;
     goToCoord(x, y);
-    cout << "0";
+    std::cout << "0";
 }
 
 void cursorHandle(int x, int y, BoolMatrix baduk)
 {
     goToCoord(x, y);
     if (baduk.get(x - 2, y - 2))
-        cout << "*";
+        std::cout << "*";
     else
-        cout << "-";
+        std::cout << "-";
 }
 
 char xComponent(int x)
@@ -185,12 +187,17 @@ int yComponent(int y, const int yBound)
 
 void updatePositionAlert(int x, int y, const int yBound)
 {
-    goToCoord(23, 3); cout << "                ";
-    goToCoord(23, 3); cout << xComponent(x) << yComponent(y, yBound);
+    goToCoord(23, 3); std::cout << "                ";
+    goToCoord(23, 3); std::cout << xComponent(x) << yComponent(y, yBound);
 }
 
 void updateCoordinateAlert(int x, int y)
 {
-    goToCoord(23, 1); cout << "                ";
-    goToCoord(23, 1); cout << x << " " << y << endl;
+    goToCoord(23, 1); std::cout << "                ";
+    goToCoord(23, 1); std::cout << x << " " << y << std::endl;
+}
+
+bool stoneIsDead(int x, int y, BoolMatrix baduk)
+{
+    return baduk.getNumberOfNeighbors >= 4;
 }

@@ -1,9 +1,9 @@
-﻿Build started 1/14/2016 9:33:46 PM.
+﻿Build started 1/15/2016 1:32:21 PM.
      1>Project "C:\Users\Alexander\Documents\Visual Studio 2015\Projects\BadukGen\BadukGen.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt boolMatrix.cpp main.cpp
          main.cpp
-     1>c:\users\alexander\documents\visual studio 2015\projects\badukgen\main.cpp(28): warning C4101: 'run': unreferenced local variable
+     1>c:\users\alexander\documents\visual studio 2015\projects\badukgen\main.cpp(27): warning C4101: 'run': unreferenced local variable
          boolMatrix.cpp
          Generating Code...
        Link:
@@ -14,4 +14,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.18
+Time Elapsed 00:00:02.45

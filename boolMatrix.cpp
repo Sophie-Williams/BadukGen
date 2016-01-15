@@ -1,8 +1,6 @@
 #include "boolMatrix.h"
 #include <sstream>
 
-using namespace std;
-
 BoolMatrix::BoolMatrix()
 {
     for (int i = 0; i < NUM_ROWS; i++)
@@ -96,7 +94,7 @@ int BoolMatrix::getNumberOfNeighbors(int row, int col) const
 {
     // Returns the number of immediate true values that surrounds the given position on your 2 dimensional array
     if (!isIndexOnGrid(row, col))
-        throw exception("Index out of bounds");
+        throw std::exception("Index out of bounds");
     int count = 0;
     for (int i = row - 1; i <= row + 1; i++)
     {
@@ -115,18 +113,18 @@ int BoolMatrix::getNumberOfNeighbors(int row, int col) const
     return count;
 }
 
-string BoolMatrix::toString() const
+std::string BoolMatrix::toString() const
 {
     // Returns the string representation of the grid. You do not need to write the body for this function.
-    ostringstream outputStringStream;
+    std::ostringstream outputStringStream;
     outputStringStream << "  ";
 
     outputStringStream << 'A' << 'B' << 'C' << 'D' << 'E' << 'F' << 'G' << 'H' << 'J' << 'K' << 'L' << 'M' << 'N' << 'O' << 'P' << 'Q' << 'R' << 'S' << 'T';
 
-    outputStringStream << endl;
+    outputStringStream << std::endl;
     for (int i = NUM_ROWS - 1; i >= 0; i--)
     {
-        outputStringStream << setw(2) << i % 100;
+        outputStringStream << std::setw(2) << i % 100;
         for (int j = NUM_COLS - 1; j >= 0; j--)
         {
             if (boolMatrix[i][j] == true)
@@ -138,7 +136,7 @@ string BoolMatrix::toString() const
                 outputStringStream << "-";
             }
         }
-        outputStringStream << endl;
+        outputStringStream << std::endl;
     }
     return outputStringStream.str();
 }

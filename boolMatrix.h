@@ -5,7 +5,6 @@
 #include <iomanip>
 #include <fstream>
 #include <string>
-using namespace std;
 
 class BoolMatrix
 {
@@ -24,7 +23,7 @@ public:
     int getTotalNumberOfTrueElements() const;
 
     int getNumberOfNeighbors(int row, int col) const;
-    string toString() const;
+    std::string toString() const;
 
 private:
     static const int NUM_ROWS = 19; //The static keyword is needed to intialize the array size properly.
